@@ -1,13 +1,7 @@
 from django.db import models
-
 from django.contrib.auth.models import User
-
 import random
 
-
-
-
-# Create your models here.
 class Chess_board(object): 
     def __init__(self):
         
@@ -310,8 +304,8 @@ class Chess_board(object):
             if move in self.free:
                 self.free.remove(move)
             self.free.append(p_position)
-            if col == '1':
-                king0 = move   #I dont get it , why is past me so... confusing comment on your work god damn you
+            if col == '1' and piece == 'K1':
+                king0 = move
             if self.check(king0, col1) == True:  # is player 1 in check
                 moves.remove(move)
             self.rep = possible_rep.copy()
@@ -321,6 +315,7 @@ class Chess_board(object):
                 return True
             else: 
                 return False
+
         if analysis == True: self.moves[p_position] = moves
         king1 = self.king1
         possible_rep = self.rep.copy()
