@@ -104,7 +104,7 @@
                 } else if (piece == 'B1') {
                     document.getElementById(pos).innerHTML = "&#9821";
                 } else {
-                    console.log('nothing!');
+                    console.log('nuthin!');
                 }
             }</script>
 
@@ -192,11 +192,7 @@
             // use normal javascript here. 'data' is a javascript array
 //
             for (var x in data) {
-                if (x === "0a") { 
-                    console.log('no way!');
-                }
                 place(x, data[x].toString())
-                //console.log(typeof x); 
             }
 
             function possibilities_gone() {
@@ -213,7 +209,6 @@
                 }
             }
 
-
             function setCookie(cvalue, exminutes) {
                 var d = new Date();
                 d.setTime(d.getTime() + (exminutes*60*1000));
@@ -224,7 +219,6 @@
             function move_piece(){
                 if (this.className == "black_" || this.className == "white_"){
                     possibilities_gone()
-                    console.log(window.current);
                     this.innerHTML = window.current.innerHTML
                     window.current.innerHTML = ""
                     for (i = 0; i < 8; i++) {
@@ -259,7 +253,6 @@
                                 "https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.601.2724&rep=rep1&type=pdf"
                                 ];
                         var message = failures[choice]
-                        console.log(message)
                         if (choice > 10){
                             window.location.href = message;
                         }
@@ -275,7 +268,7 @@
                     for (index = 0; index < array.length; index++) {
                         if (document.getElementById(array[index]).className == "white"){
                             document.getElementById(array[index]).className = "white_"
-                        } else{
+                        } else if (document.getElementById(array[index]).className == "black"){
                             document.getElementById(array[index]).className = "black_"
                         }
                     }
@@ -283,47 +276,18 @@
             }
 
         </script>
-        
-
 
         <script>
             const data2 = JSON.parse('{{ moves|safe }}')
             const data3 = JSON.parse('{{ mates|safe }}')
             const array1 = ["a", "b", "c", "d", "e", "f", "g", "h"];
-            console.log(data3)
             for (i = 0; i < 8; i++) {
                 for (const element of array1) {
                     document.getElementById(i.toString() + element).addEventListener('click', move_piece);
                 }
             }
-
-
         </script>
-
-
-
     <center id='message' style="padding-top: 5%; font-size: 30px;"></center>
-
-    <!--{% if form.errors %}
-    <script>console.log("issue")</script>
-    <p> wrong...</p>
-    {% endif %}
-
-    {% if next %}
-    <script>console.log("problem")</script>
-    <p> fuck off</p>
-    {% endif %}
-
-    <form method="post">
-        {% csrf_token %}
-        {{ login.as_p }}
-        <div id="buttons" align="right">
-        <button class ="btn btn-primary" type="submit">تسجيل الدخول</button><br><br>
-        </div>
-  </form> -->
-
-
-
 </body>
     
 </html>
