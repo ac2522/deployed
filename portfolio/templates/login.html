@@ -11,69 +11,9 @@
 
         <meta charset="UTF-8">
         <title>CAPTCHA</title>
-        <style type="text/css">
-            .chessboard {
-                width: 640px;
-                height: 640px;
-                border: 25px solid #333;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
-
-            .background {
-                background-color: red; /* for visualization purposes */
-                display: inline-block;
-            }
-
-            .black {
-                float: left;
-                width: 76px;
-                height: 76px;
-                background-color: #999;
-                font-size: 50px;
-                border: 2px solid #999;
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .white {
-                float: left;
-                width: 76px;
-                height: 76px;
-                background-color: #fff;
-                font-size: 50px;
-                text-align: center;
-                border: 2px solid #fff;
-                display: table-cell;
-                vertical-align: middle;
-            }
-            .black_ {
-                float: left;
-                width: 76px;
-                height: 76px;
-                background-color: #999;
-                font-size: 50px;
-                border: 2px solid red;
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .white_ {
-                float: left;
-                width: 76px;
-                height: 76px;
-                background-color: #fff;
-                font-size: 50px;
-                text-align: center;
-                border: 2px solid red;
-                display: table-cell;
-                vertical-align: middle;
-            }
-        </style>
+        <link href="{% static 'images/favicon-b.png' %}" rel="icon" media="(prefers-color-scheme: light)"/>
+        <link href="{% static 'images/favicon-w.png' %}" rel="icon" media="(prefers-color-scheme: dark)"/>
+		<link rel="stylesheet" href="{% static 'assets/css/chess.css' %}" />
     </head>
     <body>
 
@@ -103,8 +43,6 @@
                     document.getElementById(pos).innerHTML = "&#9815";
                 } else if (piece == 'B1') {
                     document.getElementById(pos).innerHTML = "&#9821";
-                } else {
-                    console.log('nuthin!');
                 }
             }</script>
 
@@ -193,6 +131,7 @@
 //
             for (var x in data) {
                 place(x, data[x].toString())
+                
             }
 
             function possibilities_gone() {
